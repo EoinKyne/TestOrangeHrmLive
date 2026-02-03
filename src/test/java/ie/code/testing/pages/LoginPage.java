@@ -19,6 +19,9 @@ public class LoginPage {
     @FindBy(xpath = "//input[@name='username']") private WebElement usernameField;
     @FindBy(xpath = "//input[@name='password']") private WebElement passwordField;
     @FindBy(xpath = "//button[@type='submit']") private WebElement loginButton;
+
+    @FindBy(xpath = "//p[@class='oxd-text oxd-text--p orangehrm-login-forgot-header']")
+    private WebElement forgotPassword;
     @FindBy(xpath = "//a[@href='https://www.linkedin.com/company/orangehrm/mycompany/']//*[name()='svg']")
     private WebElement linkedInLink;
 
@@ -37,5 +40,9 @@ public class LoginPage {
 
     public void loginPageLinkedInLink(){
         linkedInLink.click();
+    }
+
+    public void forgotPassword(){
+        forgotPassword.click();
     }
 }

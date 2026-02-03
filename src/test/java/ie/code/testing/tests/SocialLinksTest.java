@@ -15,7 +15,18 @@ public class SocialLinksTest extends BaseTest {
     @Test
     void verifyLinkedInLink(){
         LoginPage loginPage = new LoginPage(chromeDriver);
+        loginPage.loginPageLinkedInLink();
+        String parentWindow = chromeDriver.getWindowHandle();
+        wait = new WebDriverWait(chromeDriver, Duration.ofSeconds(15));
+        wait.until(chromeDriver -> chromeDriver.getWindowHandles().size()>1);
+        for (String windowHandle : chromeDriver.getWindowHandles()
+             ) {
+            if (!windowHandle.equals(parentWindow)){
+                chromeDriver.switchTo().window(windowHandle);
+                break;
+            }
+        }
         String currentUrl =  chromeDriver.getCurrentUrl();
-        Assert.assertTrue(currentUrl.contains("linkedin"));
+        Assert.assertTrue(currentUrl.contains("linkedin") && currentUrl.contains("orangehrm"));
     }
 }
