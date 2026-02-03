@@ -19,8 +19,8 @@ public class LoginPage {
     @FindBy(xpath = "//input[@name='username']") private WebElement usernameField;
     @FindBy(xpath = "//input[@name='password']") private WebElement passwordField;
     @FindBy(xpath = "//button[@type='submit']") private WebElement loginButton;
-    @FindBy(xpath = "//a[@href='https://www.linkedin.com/company/orangehrm/mycompany/']//*[name()='svg']")
-    private WebElement linkedInLink;
+    @FindBy(xpath = "//p[@class='oxd-text oxd-text--p orangehrm-login-forgot-header']")
+    private WebElement forgotPassword;
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -33,9 +33,5 @@ public class LoginPage {
         usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         loginButton.click();
-    }
-
-    public void loginPageLinkedInLink(){
-        linkedInLink.click();
     }
 }
