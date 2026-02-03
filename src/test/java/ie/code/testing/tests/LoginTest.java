@@ -16,7 +16,7 @@ public class LoginTest extends BaseTest {
     protected String username = "Admin";
     protected String pass = "admin123";
     protected String wrongPass = "Admin123";
-    WebDriverWait wait;
+    private WebDriverWait wait;
 
     @Test
     void verifyLogin(){
