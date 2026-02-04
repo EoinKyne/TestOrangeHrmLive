@@ -33,6 +33,9 @@ public class LoginPage {
     @FindBy(xpath = "//a[@href='https://www.youtube.com/c/OrangeHRMInc']//*[name()='svg']")
     private WebElement youtubeLink;
 
+    @FindBy(xpath = "//a[normalize-space()='OrangeHRM, Inc']")
+    private WebElement orangeHrmIncLink;
+
     public LoginPage(WebDriver driver){
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
@@ -64,5 +67,9 @@ public class LoginPage {
 
     public void forgotPassword(){
         forgotPassword.click();
+    }
+
+    public void loginPageOrangeHrmIncLink(){
+        orangeHrmIncLink.click();
     }
 }
