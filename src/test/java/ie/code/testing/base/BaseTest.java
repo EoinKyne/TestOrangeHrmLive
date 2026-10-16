@@ -4,6 +4,7 @@ import ie.code.testing.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +18,10 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup(){
-        chromeDriver = new ChromeDriver();
+        if(headless){
+            options.addArguments("--headless");
+        }
+        chromeDriver = new ChromeDriver(options);
         chromeDriver.manage().window().maximize();
         chromeDriver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
     }
@@ -28,4 +32,9 @@ public class BaseTest {
             chromeDriver.quit();
         }
     }
+
+    ChromeOptions options = new ChromeOptions();
+
+    boolean headless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+
 }
