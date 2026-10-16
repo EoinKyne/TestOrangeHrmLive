@@ -23,6 +23,7 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(chromeDriver);
         loginPage.login(username, pass);
         String currentUrl = chromeDriver.getCurrentUrl();
+        wait = new WebDriverWait(chromeDriver, Duration.ofSeconds(15));
         Assert.assertTrue(currentUrl.contains("dashboard"), "Login failed, Dashboard not reached");
     }
 
